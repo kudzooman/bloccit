@@ -9,15 +9,17 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def create
     @post = current_user.posts.build(params.require(:post).permit(:title, :body))
+    authorize @post 
     if @post.save
-      flash[:notice] = "Post was saved."
+      flash[:notice] = "Bam!"
       redirect_to @post
     else
-      flash[:error] = "There was an error saving the post. Please try again."
+      flash[:error] = "What was that?! Try again."
       render :new
     end
   end
@@ -29,7 +31,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params.require(:post).permit(:title, :body))
-      flash[:notice] = "Post was updated."
+      flash[:notice] = "Good stuff!"
       redirect_to @post
     else
       flash[:error] = "Ruh roh! Error! Try again, this time do it right."
