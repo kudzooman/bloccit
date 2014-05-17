@@ -25,7 +25,6 @@ class PostsController < ApplicationController
     authorize @post 
     if @post.save
       redirect_to [@topic, @post], notice: "Bam!"
-      redirect_to @post
     else
       flash[:error] = "What was that?! Try again."
       render :new
