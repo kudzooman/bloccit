@@ -1,7 +1,9 @@
 <h1>What's Up 1ioteam?</h1>
 
 <div class="row">
+
   <div class="col-md-4">
+
     <p>What we're looking for</p>
     <ul>
       <li>User site issues or ideas</li>
@@ -10,20 +12,9 @@
       <li>Any other ideas that will help 1iota take over the world</li>
     </ul>
   </div>
-  <div class="col-md-8">
-    <%= form_for [@topic, @post] do |f| %>
-      <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control', placeholder: "This is where your post title goes" %>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :body %>
-        <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "And this where you type your thoughts. Good luck!" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Save", class: 'btn btn-success' %>
-      </div>
-    <% end %> 
+  <div class="col-md-8">
+   <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
+   
   </div>
 </div>
