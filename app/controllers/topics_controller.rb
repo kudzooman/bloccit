@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
   def index
-    @topic = Topic.all 
-    authorize @topic
+    @topics = Topic.paginate(page: params[:page], per_page: 15) 
+    #changed page_per to 15 instead of 10
+    authorize @topics
   end
 
   def new
@@ -11,7 +12,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 15)
+    #changed page_per to 15 instead of 10
   end
 
   def edit
