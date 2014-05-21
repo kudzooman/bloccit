@@ -1,23 +1,23 @@
 class CommentsController < ApplicationController
-  def new
-    @post = Post.find(params[:post_id])
-    @comment = Commment.new
-    authorize @comment
-  end
+#  def new
+#    @post = Post.find(params[:post_id])
+#    @comment = Commment.new
+#    authorize @comment
+#  end
 
-  def show
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
-  end
+#  def show
+#    @post = Post.find(params[:post_id])
+#    @comment = Comment.find(params[:id])
+#  end
 
-  def edit
-    @post = Post.find(params[:post_id])
-    @comment = comment.find(params[:id])
-    authorize @comment
-  end
+#  def edit
+#    @post = Post.find(params[:post_id])
+#    @comment = comment.find(params[:id])
+#    authorize @comment
+#  end
 
 def create
-    @post = Post.find(params[:post_id])
+    @post = Post.find(params[:id])
     @comment = current_user.comment.build(comment_params)
     @comment.post = @post
 
