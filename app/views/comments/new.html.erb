@@ -1,0 +1,20 @@
+<h1>What's Up 1ioteam?</h1>
+
+<div class="row">
+
+  <div class="col-md-4">
+
+    <p>What we're looking for</p>
+    <ul>
+      <li>User site issues or ideas</li>
+      <li>Admin site issues or ideas</li>
+      <li>Show logistics issues or ideas</li>
+      <li>Any other ideas that will help 1iota take over the world</li>
+    </ul>
+  </div>
+
+  <div class="col-md-8">
+   <%= render partial: 'form', locals: { topic: @topic, post: @post, comment: @comment} %>
+   
+  </div>
+</div>
