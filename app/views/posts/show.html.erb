@@ -11,9 +11,16 @@
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
-      <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
+      <%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-warning' %>
     <% end %>
   </div>
-
+  <div class="col-md-8">
+    <% if policy(Comment.new).create? %>
+      <%= link_to "Comment", class: 'btn btn-info' %>
+    <% end %>
+  </div>
+  <div class="col-sm-8">
+    <small><%= @comment.body %></small>
+  </div>
 </div>
 

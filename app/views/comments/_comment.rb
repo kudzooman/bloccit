@@ -1,1 +1,1 @@
-<p>Comment: <%= comment.name %></p>
+<h1><%= @comment.name %></h1>
