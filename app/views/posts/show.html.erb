@@ -2,25 +2,26 @@
 
 <div class="row">
   <div class="col-md-8">
-      <small>
+      <p>
         <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-        submitted <%= time_ago_in_words(@post.created_at) %> ago by
+        post submitted <%= time_ago_in_words(@post.created_at) %> ago by
         <%= @post.user.name %>
-      </small>
-    <p><%= markdown @post.body %></p>
+      </p>
+    <h3><%= markdown @post.body %></h3>
   </div>
   <div class="col-md-4">
-    <% if policy(@post).edit? %>
-      <%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-warning' %>
-    <% end %>
+    <%= link_to "Back to Topics", topics_path(@topic), class: 'btn btn-primary btn-lg' %>
   </div>
   <div class="col-md-8">
-    <% if policy(Comment.new).create? %>
-      <%= link_to "Comment", class: 'btn btn-info' %>
+    <% if policy(@post).edit? %>
+      <%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-warning btn-sm' %>
     <% end %>
   </div>
   <div class="col-sm-8">
-    <small><%= @comment.body %></small>
+    <%= render @comments %>    
+  </div>
+  <div class="col-md-8">
+    <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
   </div>
 </div>
 

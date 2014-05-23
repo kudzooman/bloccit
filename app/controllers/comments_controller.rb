@@ -1,37 +1,31 @@
 class CommentsController < ApplicationController
-#  def new
-#    @post = Post.find(params[:post_id])
-#    @comment = Commment.new
-#    authorize @comment
-#  end
-
-#  def show
-#    @post = Post.find(params[:post_id])
-#    @comment = Comment.find(params[:id])
-#  end
-
-#  def edit
-#    @post = Post.find(params[:post_id])
-#    @comment = comment.find(params[:id])
-#    authorize @comment
-#  end
 
 def create
-    @post = Post.find(params[:id])
-    @comment = current_user.comment.build(comment_params)
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+    @comments = @post.comments
+
+    @comment = current_user.comments.build(comment_params)
     @comment.post = @post
+    @new_comment = Comment.new
 
     authorize @comment 
+
     if @comment.save
-      redirect_to @post, notice: "Bam!"
+      flash[:notice] = "Bam!"
+      redirect_to [@topic, @post]
     else
       flash[:error] = "What was that?! Try again."
       render :new
+#      redirect_to [@topic, @post, @comments]
     end
   end
 
+  #def destroy
+  #end
+
   def comment_params
-  params.require(:comment).permit(:body)
-end
+    params.require(:comment).permit(:body, :post_id)
+  end
 
 end

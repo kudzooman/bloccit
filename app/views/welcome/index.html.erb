@@ -1,24 +1,29 @@
 <br/>
 <div class="jumbotron">
   <h1>1iota Talk</h1>
-  <p>1iota Talk is a resource for 1iota project managers and employees (the 1ioteam) to talk about 1iota</p>
+  <p>1iota Talk is a resource for 1iota project managers and employees (the 1ioteam) to talk about 1iota.</p>
   <p>
-      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or 
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> or
+      <%= link_to "Start Talking", topics_path, class: 'btn btn-warning btn-lg' %> now!
   </p>
 </div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h2>What problems are you having</h2>
     <p>The 1ioteam can post any issues or problems regarding the user site, admin site or logistics at a show or event.</p>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h2>Stay up to date</h2>
     <p>1iota Talk is a good way to check in and see what's happening internally within the 1iota-verse.</p>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h2>Collaborate</h2>
     <p>Tell other PM's and fellow 1ioteam-mates how you do things and find out how they do things. Maybe it will help.</p>
+  </div>
+  <div class="col-md-3">
+    <h2>The Best Part</h2>
+    <p>The crowd decides! Do you see a post about something you really think needs to be addressed? Vote it up!</p>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <h1><%= @topic.name %></h1>
 
 <% if policy(@topic).update? %>
-  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
+  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-warning btn-sm' %>
 <% end %>
 
 <div class="row">
@@ -26,7 +26,7 @@
   </div>
   <div class="col-md-4">
     <% if policy(Post.new).create? %>
-      <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
+      <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-primary btn-lg' %>
       <% end %>
   </div>
 </div>
