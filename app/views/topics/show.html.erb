@@ -28,6 +28,9 @@
     <% if policy(Post.new).create? %>
       <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-primary btn-lg' %>
       <% end %>
+    <% if policy(@topic).destroy? %>
+      <%= link_to "Vaporize!", @topic, method: :delete, class: 'btn btn-danger btn-lg', data: { confirm: 'Final answer? Cause this topic is about to be real gone.'} %>
+    <% end %>
   </div>
 </div>
 

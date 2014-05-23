@@ -21,8 +21,21 @@ def create
     end
   end
 
-  #def destroy
-  #end
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+
+    @comment = @post.comments.find(params[:id])
+
+    authorize @comment
+    if @comment.destroy
+      flash[:notice] = "Comment go bye bye."
+      redirect_to [@topic, @post]
+    else
+      flash[:error] = "That didn't work. Do again."
+        redirect_to [@topic, @post]
+    end
+  end
 
   def comment_params
     params.require(:comment).permit(:body, :post_id)

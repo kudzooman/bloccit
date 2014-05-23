@@ -31,7 +31,8 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    #this was set to false before I changed it to update? in the DESTROY checkpoint
+    update?
   end
 
   def scope

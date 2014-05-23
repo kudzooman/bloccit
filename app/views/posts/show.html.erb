@@ -16,6 +16,9 @@
     <% if policy(@post).edit? %>
       <%= link_to "Edit Post", edit_topic_post_path(@topic, @post), class: 'btn btn-warning btn-sm' %>
     <% end %>
+    <% if policy(@post).destroy? %>
+      <%= link_to "Vaporize!", [@topic, @post], method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' } %>
+    <% end %> 
   </div>
   <div class="col-sm-8">
     <%= render @comments %>    

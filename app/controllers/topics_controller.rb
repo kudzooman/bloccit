@@ -25,7 +25,8 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     authorize @topic
     if @topic.save
-      redirect_to @topic, notice: "Oh yeah, topic saved!"
+      flash[:notice] = "Oh yeah, topic saved!"
+      redirect_to topics_path
     else
       flash[:error] = "Whoa, whoa, whoa. What was that? Try again."
       render :new
@@ -36,12 +37,25 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     authorize @topic
     if @topic.update_attributes(topic_params)
-      redirect_to @topic
+      redirect_to @topics_path
     else
       flash[:error] = "Nope. ERROR! 'Try' again."
       render :edit
     end
+  end
 
+  def destroy
+    @topic = Topic.find(params[:id])
+    name = @topic.name
+
+    authorize @topic
+    if @topic.destroy
+    flash[:notice] = "\"#{name}\" go bye bye."
+    redirect_to topics_path
+    else
+    flash[:error] = "Something went wrong."
+    render :show
+    end
   end
 
   private
