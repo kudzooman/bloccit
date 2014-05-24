@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     authorize @topic
     if @topic.update_attributes(topic_params)
-      redirect_to @topics_path
+      redirect_to topics_path
     else
       flash[:error] = "Nope. ERROR! 'Try' again."
       render :edit
