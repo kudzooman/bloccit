@@ -25,7 +25,7 @@ topics = Topic.all
 
 # Create Posts
 50.times do
-  Post.create(
+  post = Post.create(
     user:   users.sample,
     topic:  topics.sample,
     title:  Faker::Lorem.sentence,

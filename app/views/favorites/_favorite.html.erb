@@ -1,0 +1,15 @@
+<% if policy(Favorite.new).create? %>
+  <div class="favorite">
+    <% if favorite = current_user.favorited(post) %>
+      <%= link_to [topic, post, favorite], class: 'btn btn-danger btn-sm', method: :delete do %>
+        <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Booo!
+      <% end %>
+    <% else %>
+      <%= link_to [topic, post, Favorite.new], class: 'btn btn-info btn-sm', method: :post do %>
+    <i class="glyphicon glyphicon-star"> </i>&nbsp; Nice!
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+
