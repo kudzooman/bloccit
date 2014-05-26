@@ -7,7 +7,7 @@
     <small>
       <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago
       <% if policy(comment).destroy? %>
-        | <%= link_to "Zap!", [@topic, @post, comment], method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Final answer? Cause this comment is about to be real gone.'} %>
+        | <%= link_to "Zap!", comment_url_helper(comment), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Final answer? Cause this comment is about to be real gone.'} %>
       <% end %>
     </small>
     <p><%= comment.body %></p>

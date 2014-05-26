@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
   mount_uploader :images, PostsUploader
 
   default_scope { order('rank DESC') }
+  scope :visible_to, ->(user) { user ? all : joins(:topic).where('topics.public' => true) }
 
   def up_votes
     self.votes.where(value: 1).count
