@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  respond_to :html, :js
 
 def create
     @topic = Topic.find(params[:topic_id])
@@ -28,13 +29,17 @@ def create
     @comment = @post.comments.find(params[:id])
 
     authorize @comment
+
     if @comment.destroy
       flash[:notice] = "Comment go bye bye."
-      redirect_to [@topic, @post]
     else
       flash[:error] = "That didn't work. Do again."
-        redirect_to [@topic, @post]
     end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
+    end
+
   end
 
   def comment_params
