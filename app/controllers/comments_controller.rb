@@ -6,7 +6,7 @@ def create
     @post = @topic.posts.find(params[:post_id])
     @comments = @post.comments
 
-    @comment = current_user.comments.build(comment_params)
+    @comment = current_user.comments.build( comment_params )
     @comment.post = @post
     @new_comment = Comment.new
 
@@ -41,6 +41,8 @@ def create
     end
 
   end
+
+  private
 
   def comment_params
     params.require(:comment).permit(:body, :post_id)
