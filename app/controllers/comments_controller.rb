@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   respond_to :html, :js
 
-def create
+  def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
     @comments = @post.comments
@@ -14,11 +14,12 @@ def create
 
     if @comment.save
       flash[:notice] = "Bam!"
-      redirect_to [@topic, @post]
     else
       flash[:error] = "What was that?! Try again."
-      render :new
-#      redirect_to [@topic, @post, @comments]
+    end
+      
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
 
@@ -39,7 +40,6 @@ def create
     respond_with(@comment) do |f|
       f.html { redirect_to [@topic, @post] }
     end
-
   end
 
   private
