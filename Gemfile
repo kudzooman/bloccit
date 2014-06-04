@@ -61,7 +61,7 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-
+gem 'newrelic_rpm'
 
 
 # Use ActiveModel has_secure_password
